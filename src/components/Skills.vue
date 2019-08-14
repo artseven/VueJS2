@@ -7,7 +7,7 @@
         </li>
       </ul>
 
-      <div v-bind:class="{ alert: showAlert }"></div>
+      <div v-bind:style="{ backgroundColor: bgColor, width: bgWidth, height: bgHeight}"></div>
     </div>
   </div>
 </template>
@@ -21,7 +21,9 @@ export default {
         { "skill": "Vue.js"},
         { "skill": "Frontend Developer"},
       ],
-      showAlert: true
+      bgColor: 'yellow',
+      bgWidth: '100%',
+      bgHeight: '30px'
     }
   }
 }
@@ -33,5 +35,8 @@ export default {
     background-color: yellow;
     width: 100%;
     height: 30px;
+  }
+  .another-class {
+    border: 5px solid black;
   }
 </style>
