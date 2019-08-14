@@ -5,14 +5,16 @@
       <form @submit.prevent="addSkill">
         <input type="text" placeholder="Enter a skill you have..." v-model="skill" v-validate="'min:5'" name="skill">
 
-        <transition name="alert-in">
+        <transition name="alert-in" enter-active-class="animated flipInX" leave-active-class="animated flipOutX">
           <p class="alert" v-if="errors.has('skill')">{{ errors.first('skill') }}</p>
         </transition>
       </form>
       <ul>
-        <li v-for="(data, index) in skills" :key='index'>
-          {{ data.skill }}
-        </li>
+        <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+          <li v-for="(data, index) in skills" :key='index'>
+            {{ data.skill }}
+          </li>
+        </transition-group>
       </ul>
       
       <p>These are the skills that you possess.</p>
@@ -50,6 +52,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css";
 
   .holder {
     background: #fff;
